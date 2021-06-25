@@ -41,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
         getJsonData();
 
     }
-    priv    ate void getJsonData() {
-        String URL = "https://raw.githubusercontent.com/bikashthapa01/myvideos-android-app/master/data.json";
+    private void getJsonData() {
+        String URL = "https://raw.githubusercontent.com/Mehtabkazmi/Video-Streaming-App-using-rest-Api/master/data.json";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         JsonObjectRequest objectRequest = new JsonObjectRequest(Request.Method.GET, URL, null, new Response.Listener<JSONObject>() {
             @Override
