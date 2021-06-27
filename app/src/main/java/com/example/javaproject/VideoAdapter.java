@@ -12,6 +12,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -20,17 +22,16 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
     private List<Video> allVideos;
     private Context context;
 
-    public VideoAdapter(Context ctx, List<Video> videos){
+    public VideoAdapter(Context ctx, List<Video> videos) {
         this.allVideos = videos;
         this.context = ctx;
     }
 
 
-
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.video_view,parent,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.video_view, parent, false);
         return new ViewHolder(v);
     }
 
@@ -43,8 +44,10 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
             @Override
             public void onClick(View v) {
                 Bundle b = new Bundle();
-                b.putSerializable("videoData",allVideos.get(position));
-                Intent i = new Intent(context,Player.class);
+
+                b.putSerializable("videoData", allVideos.get(position));
+
+                Intent i = new Intent(context, Player.class);
                 i.putExtras(b);
                 v.getContext().startActivity(i);
 
@@ -61,6 +64,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
         ImageView videoImage;
         TextView title;
         View vv;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -71,3 +75,13 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
         }
     }
 }
+
+
+//                String str = "null";
+//                ObjectMapper objectMapper = new ObjectMapper();
+//                try {
+//                    str = objectMapper.writeValueAsString(allVideos);
+//                System.out.println(str);
+//                } catch (JsonProcessingException e) {
+//                    e.printStackTrace();
+//                }

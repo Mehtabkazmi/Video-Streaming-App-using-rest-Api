@@ -9,6 +9,18 @@ public class Video implements Serializable {
     private String videoUrl;
     private String imageUrl;
 
+    public Video(String title, String description, String author, String videoUrl, String imageUrl) {
+        this.title = title;
+        this.description = description;
+        this.author = author;
+        this.videoUrl = videoUrl;
+        this.imageUrl = imageUrl;
+    }
+
+    public Video() {
+
+    }
+
     public String getTitle() {
         return title;
     }
